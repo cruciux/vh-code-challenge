@@ -36,8 +36,8 @@ class QuestionController extends Controller
         $validatedData = $request->validate([
             'value' => 'required|max:255|min:5',
         ], [
-            'value.required' => 'Please enter your question',
-            'value.min' => 'Your question must be longer than 5 characters',
+            'value.required' => 'Please enter your answer',
+            'value.min' => 'Your answer must be longer than 5 characters',
         ]);
 
         $question = \App\Question::find($id);
