@@ -15,7 +15,7 @@ class HomeController extends Controller
             "What would happen to all the animals if we stopped eating them?",
         ];
 
-        $questions = \App\Question::all();
+        $questions = \App\Question::orderBy('id', 'desc')->get();
 
         return view('home', [
             'placeholderQuestion' => $placeholderQuestions[array_rand($placeholderQuestions, 1)],
