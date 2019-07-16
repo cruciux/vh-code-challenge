@@ -37,9 +37,13 @@
             @foreach ($questions as $question)
                 <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
                     
-                    <a href="{{ route('question.view', ['id' => $question->id]) }}" class="pr-2 text-dark">
-                        {{ $question->value }}
-                    </a>
+                    <div>
+                        <a href="{{ route('question.view', ['id' => $question->id]) }}" class="pr-2 text-dark">
+                            {{ $question->value }}
+                        </a>
+
+                        <div class="text-muted small">Posted {{ Carbon\Carbon::parse($question->created_at)->diffForHumans() }}</div>
+                    </div>
 
                     <span class="badge badge-primary">
                         {{ count($question->answers) }} answer{{ count($question->answers) === 1 ? '' : 's' }}

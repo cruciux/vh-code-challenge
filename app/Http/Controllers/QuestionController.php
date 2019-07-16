@@ -26,7 +26,6 @@ class QuestionController extends Controller
         $question = \App\Question::find($id);
 
         return view('question', [
-            //'placeholderQuestion' => $placeholderQuestions[array_rand($placeholderQuestions, 1)],
             'question' => $question,
         ]);
     }
