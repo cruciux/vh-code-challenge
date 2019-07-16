@@ -31,8 +31,18 @@ class QuestionController extends Controller
         ]);
     }
 
-    public function answerStore(Reqeust $request)
+    public function answerStore($id, Request $request)
     {
+        $validatedData = $request->validate([
+            'value' => 'required|max:255|min:5',
+        ], [
+            'value.required' => 'Please enter your question',
+            'value.min' => 'Your question must be longer than 5 characters',
+        ]);
 
+        $question = \App\Question::find($id);
+        $comment = $question->answers()->create($validatedData);
+
+        return redirect()->back()->with('message', 'Your answer has been successfully posted!');
     }
 }
